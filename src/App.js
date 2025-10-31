@@ -1,20 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route , useLocation} from "react-router-dom";
 import Home from "./pages/Home";
 import WorkHistory from "./pages/WorkHistory";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
+import DraggableDateTime from "./components/DraggableDateTime";
 
 function App() {
-  const [theme, setTheme] = useState("dark"); // default theme
-
+  const [theme, setTheme] = useState("dark"); 
+  const location = useLocation();
   // Toggle theme
   const toggleTheme = () => {
-    if (theme === "blue") setTheme("blue");
+    if (theme === "blue") setTheme("dark");
     else if (theme === "dark") setTheme("light");
-    else setTheme("blue");
+    else setTheme("dark");
   };
 
   return (
@@ -29,6 +30,7 @@ function App() {
         </Routes>
       </main>
       <Footer theme={theme} />
+      {location.pathname==="/" && <DraggableDateTime theme={theme}/>}
     </div>
   );
 }

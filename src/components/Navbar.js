@@ -1,35 +1,56 @@
+// src/components/Navbar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Navbar({ toggleTheme, currentTheme }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  // Common active/inactive style function
+  const linkClass = ({ isActive }) =>
+    `px-3 py-2 transition-all duration-200 ${
+      isActive
+        ? "text-blue-600 font-bold border-b-2 border-blue-600"
+        : "hover:text-blue-500"
+    }`;
+
   return (
     <nav
       className={`${
-        currentTheme === "dark" ? "bg-gray-900 text-white" : "bg-white text-blue-600"
+        currentTheme === "dark"
+          ? "bg-gray-900 text-white"
+          : "bg-white text-blue-600"
       } shadow-md transition-colors duration-500`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <Link
+            <NavLink
               to="/"
               className={`text-2xl font-bold ${
                 currentTheme === "dark" ? "text-white" : "text-blue-600"
               }`}
             >
               MyPortfolio
-            </Link>
+            </NavLink>
           </div>
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-blue-600">Home</Link>
-            <Link to="/work" className="hover:text-blue-600">Work</Link>
-            <Link to="/projects" className="hover:text-blue-600">Projects</Link>
-            <Link to="/education" className="hover:text-blue-600">Education</Link>
+            <NavLink to="/" className={linkClass}>
+              Home
+            </NavLink>
+            <NavLink to="/work" className={linkClass}>
+              Work
+            </NavLink>
+            <NavLink to="/projects" className={linkClass}>
+              Projects
+            </NavLink>
+            <NavLink to="/education" className={linkClass}>
+              Education
+            </NavLink>
 
+            {/* Theme Switch Button */}
             <button
               onClick={toggleTheme}
               className="ml-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition"
@@ -38,7 +59,8 @@ function Navbar({ toggleTheme, currentTheme }) {
                 ? "Dark"
                 : currentTheme === "dark"
                 ? "Light"
-                : "Blue"} Theme
+                : "Blue"}{" "}
+              Theme
             </button>
           </div>
 
@@ -86,16 +108,27 @@ function Navbar({ toggleTheme, currentTheme }) {
         </div>
       </div>
 
+      {/* Mobile Dropdown Menu */}
       {isOpen && (
         <div
           className={`md:hidden px-2 pt-2 pb-3 space-y-1 ${
-            currentTheme === "dark" ? "bg-gray-800 text-white" : "bg-white text-blue-600"
+            currentTheme === "dark"
+              ? "bg-gray-800 text-white"
+              : "bg-white text-blue-600"
           } shadow transition-colors duration-500`}
         >
-          <Link to="/" className="block px-3 py-2 rounded hover:bg-blue-100">Home</Link>
-          <Link to="/work" className="block px-3 py-2 rounded hover:bg-blue-100">Work</Link>
-          <Link to="/projects" className="block px-3 py-2 rounded hover:bg-blue-100">Projects</Link>
-          <Link to="/education" className="block px-3 py-2 rounded hover:bg-blue-100">Education</Link>
+          <NavLink to="/" className={linkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/work" className={linkClass}>
+            Work
+          </NavLink>
+          <NavLink to="/projects" className={linkClass}>
+            Projects
+          </NavLink>
+          <NavLink to="/education" className={linkClass}>
+            Education
+          </NavLink>
         </div>
       )}
     </nav>
