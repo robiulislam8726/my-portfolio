@@ -2,10 +2,9 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://USERNAME.github.io/my-portfolio",
+  "homepage": "https://robiulislam8726.github.io/my-portfolio",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
-    "gh-pages": "^6.3.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
@@ -13,6 +12,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
+    "gh-pages": "^6.3.0",
     "postcss": "^8.5.6",
     "react-scripts": "^5.0.1",
     "tailwindcss": "^3.4.18"

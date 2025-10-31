@@ -73,7 +73,7 @@ function Home({ theme }) {
           {/* Left Side: Text */}
           <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
             <h1 className={`text-4xl md:text-5xl font-bold ${currentTheme.text}`}>
-              Hello! <br />
+              Hello! Robiul Here <br />
               I am a Full Stack Web Developer
             </h1>
             <p className={`text-lg md:text-xl ${currentTheme.text}`}>
