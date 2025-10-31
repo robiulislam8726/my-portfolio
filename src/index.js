@@ -8,7 +8,7 @@ import './index.css'; // Tailwind CSS
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/my-portfolio">
       <App />
     </BrowserRouter>
   </React.StrictMode>

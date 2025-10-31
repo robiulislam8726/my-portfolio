@@ -1,13 +1,11 @@
-import React from "react";
-
-const Footer = () => {
+export default function Footer({ theme }) {
   return (
-    <footer className="bg-gray-800 text-white py-6 mt-auto">
-      <div className="container text-center">
-        &copy; {new Date().getFullYear()} My Portfolio. All rights reserved Md Robiul Islam.
-      </div>
+    <footer
+      className={`${
+        theme === "dark" ? "bg-gray-800 text-white" : "bg-primary text-white"
+      } py-8 mt-12 text-center transition-colors duration-500`}
+    >
+      <p>© 2025 ISLAM MD ROBIUL - Full Stack Developer | Designed with modern technologies</p>
     </footer>
   );
-};
-
-export default Footer;
+}
