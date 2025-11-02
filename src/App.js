@@ -14,7 +14,7 @@ function App() {
   // Toggle theme
   const toggleTheme = () => {
     if (theme === "blue") setTheme("dark");
-    else if (theme === "dark") setTheme("light");
+    else if (theme === "dark") setTheme("light")
     else setTheme("dark");
   };
 

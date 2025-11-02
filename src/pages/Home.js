@@ -1,13 +1,39 @@
 import React, {useState, useEffect} from "react";
+import { motion } from "framer-motion";
 import profilePic from "../assets/profile.jpg"; 
+import CVMe from "../assets/cv.pdf";
+import workDetailsMe from "../assets/work.pdf"
 
 function Home({ theme }) {
  const [showWelcome, setShowWelcome] = useState(false);
-  const skills = ["React", "JavaScript", "Node.js", "MySQL"];
+  const skills = [
+    {
+      name: "React",
+      level: "Intermediate",
+      description: "2+ years of experience building Modern Web application for FrontEnd Using React. Also I Have Strong knowledge of React Route , Hookes",
+    },
+    {
+      name: "JavaScript",
+      level: "Intermediate",
+      description: "Strong understanding of ES6+ syntax and modern practices.",
+      gradient: "from-yellow-400 to-orange-500",
+    },
+    {
+      name: "Node.js",
+      level: "Begniers",
+      description: "Experience creating APIs and connecting databases.",
+      gradient: "from-green-400 to-emerald-500",
+    },
+    {
+      name: "MySQL",
+      level: "Intermediate",
+      description: "Good knowledge of database schema and SQL joins.",
+      gradient: "from-sky-400 to-blue-500",
+    },
+  ];
   const certifications = [
-    "AWS Certified Developer",
-    "React Professional Certificate",
-    "JavaScript Advanced Certificate",
+    "IT Passport",
+    "Japanese Language Proficiency Test (JLPT) N2",
   ];
  useEffect(() => {
     // Show welcome message on first visit
@@ -82,7 +108,7 @@ function Home({ theme }) {
 
             <div className="flex justify-center md:justify-start space-x-4 mt-4">
               <a
-                href="/resume.pdf"
+                href={CVMe}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -90,7 +116,7 @@ function Home({ theme }) {
                 履歴書
               </a>
               <a
-                href="/work-history.pdf"
+                href={workDetailsMe}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -113,26 +139,37 @@ function Home({ theme }) {
       </section>
 
       {/* ===== Body Section: Skills + Certifications ===== */}
-      <section className="max-w-7xl mx-auto px-4 py-12 md:flex md:space-x-12">
-
+    
         {/* Left Side: Skills */}
-        <div className="md:w-1/2 mb-8 md:mb-0">
-          <h2 className={`text-3xl font-bold mb-4 ${currentTheme.text}`}>My Skills</h2>
-          <ul className="space-y-2">
+      <section className="max-w-7xl mx-auto px-4 py-16 md:flex md:space-x-12">
+        {/* ⭐ UPDATED: Skills section re-designed */}
+        <div className="md:w-2/3 mb-8 md:mb-0">
+          <h2 className={`text-3xl font-bold mb-8 ${currentTheme.text}`}>My Skills</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
             {skills.map((skill, idx) => (
-              <li
+              // ⭐ ADDED: motion.div for hover animation + gradient border
+              <motion.div
                 key={idx}
-                className={`${currentTheme.cardBg} ${currentTheme.cardText} ${currentTheme.cardHover} shadow-md rounded px-4 py-2 transition`}
+                whileHover={{ scale: 1.05 }}
+                className={`relative bg-gradient-to-r ${skill.gradient} p-[1px] rounded-xl shadow-lg`}
               >
-                {skill}
-              </li>
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-6 hover:bg-opacity-90 transition-all duration-300 group">
+                  <h2 className="text-2xl font-semibold text-gray-800 dark:text-white group-hover:text-gray-900">
+                    {skill.name}
+                  </h2>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{skill.level}</p>
+                  {/* ⭐ ADDED: Hover overlay with short description */}
+                  <div className="absolute inset-0 bg-black bg-opacity-80 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center text-white px-4">
+                    <p className="text-sm">{skill.description}</p>
+                  </div>
+                </div>
+              </motion.div>
             ))}
-          </ul>
+          </div>
         </div>
-
         {/* Right Side: Certifications */}
-        <div className="md:w-1/2">
-          <h2 className={`text-3xl font-bold mb-4 ${currentTheme.text}`}>Certifications</h2>
+         <div className="md:w-1/3">
+          <h2 className={`text-3xl font-bold mb-8 ${currentTheme.text}`}>Certifications</h2>
           <ul className="space-y-2">
             {certifications.map((cert, idx) => (
               <li

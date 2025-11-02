@@ -64,7 +64,7 @@ function DraggableDateTime({ theme }) {
     <div
       ref={ref}
       onMouseDown={handleMouseDown}
-      className={`fixed z-50 p-3 rounded-lg cursor-move select-none shadow-lg text-sm ${
+      className={`fixed  z-50 pt-4 mt-8 ml-3 rounded-lg cursor-move select-none shadow-lg text-sm ${
         theme === "dark"
           ? "bg-gray-900 text-white"
           : "bg-blue-600 text-white"

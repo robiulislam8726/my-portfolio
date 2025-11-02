@@ -5,6 +5,8 @@
   "homepage": "https://robiulislam8726.github.io/my-portfolio",
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.552.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
