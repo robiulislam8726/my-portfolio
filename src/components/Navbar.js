@@ -132,6 +132,9 @@ function Navbar({ toggleTheme, currentTheme }) {
           <NavLink to="/education" className={linkClass}>
             Education
           </NavLink>
+          <NavLink to="/contact" className={linkClass}>
+            Contact
+          </NavLink>
         </div>
       )}
     </nav>
