@@ -7,6 +7,7 @@ import WorkHistory from "./pages/WorkHistory";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
 import DraggableDateTime from "./components/DraggableDateTime";
+import ContactForm from "./pages/ContactForm";
 
 function App() {
   const [theme, setTheme] = useState("dark"); 
@@ -15,7 +16,7 @@ function App() {
   const toggleTheme = () => {
     if (theme === "blue") setTheme("dark");
     else if (theme === "dark") setTheme("light")
-    else setTheme("dark");
+    else setTheme("blue");
   };
 
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/work" element={<WorkHistory theme={theme} />} />
           <Route path="/projects" element={<Projects theme={theme} />} />
           <Route path="/education" element={<Education theme={theme} />} />
+          <Route path="/contact" element={<ContactForm theme={theme} />} />
         </Routes>
       </main>
       <Footer theme={theme} />

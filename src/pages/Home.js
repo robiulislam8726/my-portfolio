@@ -139,6 +139,17 @@ function Home({ theme }) {
       </section>
 
       {/* ===== Body Section: Skills + Certifications ===== */}
+      <section className="max-w-5xl mx-auto px-4 py-12 text-center">
+        <h2 className="text-3xl font-bold text-blue-600 mb-4">About Me</h2>
+        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+          I'm <span className="font-semibold text-blue-600">Robiul Islam</span>, a passionate
+          <span className="text-blue-500"> Full Stack Web Developer</span> with over 2 years
+          of hands-on experience building dynamic and user-friendly web applications.
+          I specialize in React, Node.js, MySQL, and Tailwind CSS. I enjoy turning complex
+          problems into elegant, efficient solutions and continuously improving my skills
+          through learning and real-world projects.
+        </p>
+      </section>
     
         {/* Left Side: Skills */}
       <section className="max-w-7xl mx-auto px-4 py-16 md:flex md:space-x-12">
