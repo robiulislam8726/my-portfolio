@@ -40,9 +40,13 @@ function Navbar({ toggleTheme, currentTheme }) {
             <NavLink to="/" className={linkClass}>
               Home
             </NavLink>
-            <NavLink to="/work" className={linkClass}>
+            {/* <NavLink to="/work" className={linkClass}>
               Work
-            </NavLink>
+            </NavLink> */}
+            {/* use for disable Work section */}
+            <span className={`${linkClass} opacity-50 cursor-not-allowed`}>
+              Work
+            </span>
             <NavLink to="/projects" className={linkClass}>
               Projects
             </NavLink>
@@ -123,9 +127,13 @@ function Navbar({ toggleTheme, currentTheme }) {
           <NavLink to="/" className={linkClass}>
             Home
           </NavLink>
-          <NavLink to="/work" className={linkClass}>
+          {/* <NavLink to="/work" className={linkClass}>
             Work
-          </NavLink>
+          </NavLink> */}
+           {/* use for disable Work section */}
+          <span className={`${linkClass} opacity-50 cursor-not-allowed`}>
+             Work
+          </span>
           <NavLink to="/projects" className={linkClass}>
             Projects
           </NavLink>
