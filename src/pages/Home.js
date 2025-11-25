@@ -131,7 +131,8 @@ function Home({ theme }) {
             <img
               src={profilePic}
               alt="Profile"
-              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-lg border-4 border-white"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover 
+             border-4 border-white shadow-[0_0_60px_15px_rgba(0,150,255,0.7)]"
             />
           </div>
 
@@ -153,12 +154,12 @@ function Home({ theme }) {
     
         {/* Left Side: Skills */}
       <section className="max-w-7xl mx-auto px-4 py-16 md:flex md:space-x-12">
-        {/* ⭐ UPDATED: Skills section re-designed */}
+        {/*UPDATED: Skills section re-designed */}
         <div className="md:w-2/3 mb-8 md:mb-0">
           <h2 className={`text-3xl font-bold mb-8 ${currentTheme.text}`}>My Skills</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
             {skills.map((skill, idx) => (
-              // ⭐ ADDED: motion.div for hover animation + gradient border
+              // ADDED: motion.div for hover animation + gradient border
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.05 }}
@@ -169,7 +170,7 @@ function Home({ theme }) {
                     {skill.name}
                   </h2>
                   <p className="text-sm text-gray-500 dark:text-gray-400">{skill.level}</p>
-                  {/* ⭐ ADDED: Hover overlay with short description */}
+                  {/*  ADDED: Hover overlay with short description */}
                   <div className="absolute inset-0 bg-black bg-opacity-80 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center text-white px-4">
                     <p className="text-sm">{skill.description}</p>
                   </div>

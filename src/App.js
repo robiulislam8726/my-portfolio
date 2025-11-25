@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import WorkHistory from "./pages/WorkHistory";
 import Projects from "./pages/Projects";
 import Education from "./pages/Education";
-import DraggableDateTime from "./components/DraggableDateTime";
+// import DraggableDateTime from "./components/DraggableDateTime";
 import ContactForm from "./pages/ContactForm";
 
 function App() {
@@ -32,7 +32,8 @@ function App() {
         </Routes>
       </main>
       <Footer theme={theme} />
-      {location.pathname==="/" && <DraggableDateTime theme={theme}/>}
+      {/* this Section for Show dateTime in homepage */}
+      {/* {location.pathname==="/" && <DraggableDateTime theme={theme}/>} */}
     </div>
   );
 }
