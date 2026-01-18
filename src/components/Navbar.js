@@ -1,152 +1,92 @@
-// src/components/Navbar.jsx
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
 
-function Navbar({ toggleTheme, currentTheme }) {
-  const [isOpen, setIsOpen] = useState(false);
+const Navbar = () => {
+  const navItems = ['About', 'Skills', 'Projects','Work', 'Contact'];
+  const [activeSection, setActiveSection] = useState('');
+  const [isOpen, setIsOpen] = useState(false); // ✅ ADD
 
-  // Common active/inactive style function
-  const linkClass = ({ isActive }) =>
-    `px-3 py-2 transition-all duration-200 ${
-      isActive
-        ? "text-blue-600 font-bold border-b-2 border-blue-600"
-        : "hover:text-blue-500"
-    }`;
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navItems.map(item =>
+        document.getElementById(item.toLowerCase())
+      );
+      const scrollPosition = window.scrollY + 100;
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
+        if (section && section.offsetTop <= scrollPosition) {
+          setActiveSection(navItems[i].toLowerCase());
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav
-      className={`${
-        currentTheme === "dark"
-          ? "bg-gray-900 text-white"
-          : "bg-white text-blue-600"
-      } shadow-md transition-colors duration-500`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <NavLink
-              to="/"
-              className={`text-2xl font-bold ${
-                currentTheme === "dark" ? "text-white" : "text-blue-600"
-              }`}
-            >
-              MyPortfolio
-            </NavLink>
-          </div>
-
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center space-x-8">
-            <NavLink to="/" className={linkClass}>
-              Home
-            </NavLink>
-            {/* <NavLink to="/work" className={linkClass}>
-              Work
-            </NavLink> */}
-            {/* use for disable Work section */}
-            <span className={`${linkClass} opacity-50 cursor-not-allowed`}>
-              Work
+    <nav className="fixed top-0 w-full z-50 px-8 lg:px-16 py-3 backdrop-blur-md bg-purple-950/80 border-b border-purple-400/20 text-white">
+      
+      <div className="flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex flex-col cursor-pointer">
+          <div className="text-xl font-bold">
+            <span className="bg-gradient-to-r from-purple-400 via-primary to-purple-600 bg-clip-text text-transparent">
+              ROBIUL ISLAM
             </span>
-            <NavLink to="/projects" className={linkClass}>
-              Projects
-            </NavLink>
-            <NavLink to="/education" className={linkClass}>
-              Education
-            </NavLink>
-             <NavLink to="/contact" className={linkClass}>
-              Contact
-            </NavLink>
-
-            {/* Theme Switch Button */}
-            <button
-              onClick={toggleTheme}
-              className="ml-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-500 transition"
-            >
-              {currentTheme === "blue"
-                ? "Dark"
-                : currentTheme === "dark"
-                ? "Light"
-                : "Blue"}{" "}
-              Theme
-            </button>
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={toggleTheme}
-              className="bg-blue-600 text-white px-3 py-1 rounded mr-2 hover:bg-blue-500 transition"
-            >
-              {currentTheme === "blue"
-                ? "Dark"
-                : currentTheme === "dark"
-                ? "Light"
-                : "Blue"}
-            </button>
-
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="focus:outline-none"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+          <div className="text-[10px] text-gray-400 tracking-wider">
+            FULL STACK DEVELOPER
           </div>
         </div>
+
+        {/* Desktop menu */}
+        <div className="hidden md:flex items-center space-x-8">
+          {navItems.map((item, index) => (
+            <a
+              key={index}
+              href={`#${item.toLowerCase()}`}
+              className={`font-medium transition-all duration-300 ${
+                activeSection === item.toLowerCase()
+                  ? 'text-purple-300'
+                  : 'text-gray-300 hover:text-purple-200'
+              }`}
+            >
+              {item}
+            </a>
+          ))}
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden p-2 rounded-full hover:bg-white/10 transition-colors"
+          onClick={() => setIsOpen(!isOpen)}   // ✅ ADD
+        >
+          <span className="material-icons-outlined text-white text-2xl">
+            menu
+          </span>
+        </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div
-          className={`md:hidden px-2 pt-2 pb-3 space-y-1 ${
-            currentTheme === "dark"
-              ? "bg-gray-800 text-white"
-              : "bg-white text-blue-600"
-          } shadow transition-colors duration-500`}
-        >
-          <NavLink to="/" className={linkClass}>
-            Home
-          </NavLink>
-          {/* <NavLink to="/work" className={linkClass}>
-            Work
-          </NavLink> */}
-           {/* use for disable Work section */}
-          <span className={`${linkClass} opacity-50 cursor-not-allowed`}>
-             Work
-          </span>
-          <NavLink to="/projects" className={linkClass}>
-            Projects
-          </NavLink>
-          <NavLink to="/education" className={linkClass}>
-            Education
-          </NavLink>
-          <NavLink to="/contact" className={linkClass}>
-            Contact
-          </NavLink>
+      {/* Mobile menu */}
+      {isOpen && (   /* ✅ ADD */
+        <div className="md:hidden mt-4 flex flex-col space-y-4">
+          {navItems.map((item, index) => (
+            <a
+              key={index}
+              href={`#${item.toLowerCase()}`}
+              onClick={() => setIsOpen(false)}   // ✅ ADD
+              className="text-gray-300 hover:text-purple-200"
+            >
+              {item}
+            </a>
+          ))}
         </div>
       )}
     </nav>
   );
-}
+};
 
 export default Navbar;

@@ -1,40 +1,71 @@
-import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import { Routes, Route , useLocation} from "react-router-dom";
-import Home from "./pages/Home";
-import WorkHistory from "./pages/WorkHistory";
-import Projects from "./pages/Projects";
-import Education from "./pages/Education";
-// import DraggableDateTime from "./components/DraggableDateTime";
-import ContactForm from "./pages/ContactForm";
+import React, { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import BackgroundEffects from './components/BackgroundEffects';
+import LoadingScreen from './components/LoadingScreen';
+import ScrollProgress from './components/ScrollProgress';
+import WorkHistory from './components/Work';
 
 function App() {
-  const [theme, setTheme] = useState("dark"); 
-  const location = useLocation();
-  // Toggle theme
-  const toggleTheme = () => {
-    if (theme === "blue") setTheme("dark");
-    else if (theme === "dark") setTheme("light")
-    else setTheme("blue");
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Configure Tailwind with proper dark mode setup
+    if (window.tailwind) {
+      window.tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#70347bff",
+              "background-light": "#F8FAFC",
+              "background-dark": "#0B0015",
+              "surface-dark": "#120523ff",
+              "glow-purple": "#7A1CACE0",
+            },
+            fontFamily: {
+              display: ["Inter", "Outfit", "sans-serif"],
+              sans: ["Inter", "Outfit", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              'xl': '1.5rem',
+              '2xl': '2rem',
+            },
+            backgroundImage: {
+              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+            }
+          },
+        },
+      };
+    }
+  }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
   };
 
   return (
-    <div className={`${theme === "blue" ? "bg-bgLight text-primary" : theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-primary"} flex flex-col min-h-screen transition-colors duration-500`}>
-      <Navbar toggleTheme={toggleTheme} currentTheme={theme} />
-      <main className="flex-grow p-6">
-        <Routes>
-          <Route path="/" element={<Home theme={theme} />} />
-          <Route path="/work" element={<WorkHistory theme={theme} />} />
-          <Route path="/projects" element={<Projects theme={theme} />} />
-          <Route path="/education" element={<Education theme={theme} />} />
-          <Route path="/contact" element={<ContactForm theme={theme} />} />
-        </Routes>
-      </main>
-      <Footer theme={theme} />
-      {/* this Section for Show dateTime in homepage */}
-      {/* {location.pathname==="/" && <DraggableDateTime theme={theme}/>} */}
-    </div>
+    <>
+      {isLoading && <LoadingScreen onLoadingComplete={handleLoadingComplete} />}
+      <ScrollProgress />
+      <div className="bg-gradient-to-br from-purple-950 via-black to-black text-gray-100 font-sans min-h-screen relative overflow-hidden selection:bg-primary selection:text-white">
+        <BackgroundEffects />
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <WorkHistory/>
+        <Contact />
+        <Footer />
+      </div>
+    </>
   );
 }
 
