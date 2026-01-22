@@ -32,7 +32,7 @@ const About = () => {
           </h2>
           <p className="text-gray-400 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
             Currently working in Japan while transitioning to full-time web development. 
-            I'm a passionate MERN stack developer with JLPT N3 certification, creating modern 
+            I'm a passionate MERN stack developer with JLPT N2 certification, creating modern 
             and scalable web applications.
           </p>
         </div>
@@ -47,7 +47,7 @@ const About = () => {
                 combining professional work experience with a strong passion for web development.
               </p>
               <p className="leading-relaxed">
-                  Living in Japan for the past four years has strengthened my adaptability, attention to detail, and cross-cultural communication skills. I have one year of professional experience as a programmer, specializing in web development using TypeScript, JavaScript, React, Node.js, and MySQL. I also hold JLPT N3 certification, which allows me to communicate effectively in a Japanese work environment. My previous experience working full-time at a luxury traditional Japanese ryokan helped me develop strong problem-solving, teamwork, and customer-focused skills that enhance my effectiveness as a developer. 
+                  Living in Japan for the past four years has strengthened my adaptability, attention to detail, and cross-cultural communication skills. I have one year of professional experience as a programmer, specializing in web development using TypeScript, JavaScript, React, Node.js, and MySQL. I also hold JLPT N2 certification, which allows me to communicate effectively in a Japanese work environment. My previous experience as a programmer includes working on both frontend and backend development using modern technologies.
               </p>
               <p className="leading-relaxed">
                 Over the past 6 months, I completed an intensive web development program, dedicating 1,000+ 

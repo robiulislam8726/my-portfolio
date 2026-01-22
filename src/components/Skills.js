@@ -42,9 +42,9 @@ const Skills = () => {
       icon: '🏆'
     },
     {
-      title: 'JLPT N3 Certification',
+      title: 'JLPT 2 Certification',
       issuer: 'Japanese Language Proficiency Test',
-      year: '2023',
+      year: '2024',
       icon: '📖'
     },
     {

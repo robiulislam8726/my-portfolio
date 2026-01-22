@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Navbar = () => {
   const navItems = ['About', 'Skills', 'Projects','Work', 'Contact'];
   const [activeSection, setActiveSection] = useState('');
-  const [isOpen, setIsOpen] = useState(false); // ✅ ADD
+  const [isOpen, setIsOpen] = useState(false); 
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,22 +62,22 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <button
           className="md:hidden p-2 rounded-full hover:bg-white/10 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}   // ✅ ADD
+          onClick={() => setIsOpen(!isOpen)}   
         >
           <span className="material-icons-outlined text-white text-2xl">
-            menu
+            X
           </span>
         </button>
       </div>
 
       {/* Mobile menu */}
-      {isOpen && (   /* ✅ ADD */
+      {isOpen && (   
         <div className="md:hidden mt-4 flex flex-col space-y-4">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={`#${item.toLowerCase()}`}
-              onClick={() => setIsOpen(false)}   // ✅ ADD
+              onClick={() => setIsOpen(false)}   
               className="text-gray-300 hover:text-purple-200"
             >
               {item}
