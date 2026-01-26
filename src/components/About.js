@@ -32,7 +32,7 @@ const About = () => {
           </h2>
           <p className="text-gray-400 text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed">
             Currently working in Japan while transitioning to full-time web development. 
-            I'm a passionate MERN stack developer with JLPT N2 certification, creating modern 
+            I'm a passionate FullStack developer with JLPT N2 certification, creating modern 
             and scalable web applications.
           </p>
         </div>

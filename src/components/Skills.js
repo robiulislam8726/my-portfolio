@@ -38,7 +38,7 @@ const Skills = () => {
     {
       title: 'Complete Web Development',
       issuer: 'Programming Hero',
-      year: '2025',
+      year: '2024',
       icon: '🏆'
     },
     {
